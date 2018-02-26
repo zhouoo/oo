@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="box">
+
+</div>
+<script>
+    var word = [
+        {
+            title: '法师',
+            children: [
+                {
+                    title: '王昭君'
+                },
+                {
+                    title: '貂蝉',
+                    children: [
+                        {
+                            title: '技能',
+                            children: [
+                                {
+                                    title: '红雨'
+                                },
+                                {
+                                    title: '心结'
+                                },
+                                {
+                                    title: '风华'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            title: '射手',
+            children: [
+                {
+                    title: '狄仁杰'
+                },
+                {
+                    title: '虞姬',
+                    children: [
+                        {
+                            title: '技能',
+                            children: [
+                                {
+                                    title: '阵前舞'
+                                },
+                                {
+                                    title: '东风来'
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }, {
+            title: '坦克',
+            children: [
+                {title: '程咬金'},
+
+                {
+                    title: '曹操',
+
+                    children: [
+                        {
+                            title: '技能'
+                        }
+                    ]
+                }
+            ]
+        }, {
+            title: '刺客',
+            children: [
+                {
+                    title: '阿轲'
+                },
+                {
+                    title: '李白',
+                    children: [
+                        {
+                            title: '技能'
+                        }
+                    ]
+                }
+            ]
+        }, {
+            title: '战士',
+            children: [
+                {
+                    title: '花木兰'
+                },
+                {
+                    title: '赵云',
+                    children: [
+                        {
+                            title: '技能'
+                        }
+                    ]
+                }
+            ]
+        }
+    ];
+
+    function fn(m) {
+        //拼接第一级的ul
+        var html = '<ul>';
+        //循环数组，把数组里的、title里的内容用span包起来
+        for (var i = 0; i < m.length; i++) {
+            html += '<li><span>' + m[i].title + '</span>';
+            //如果数组子项有children,就重复循环children里的title,用li和span包裹起来
+            if (m[i].children) {
+                //不断调用自身，直到没有children结束调用
+                html += fn(m[i].children)
+            }
+            html += '</li>'
+        }
+        html += '</ul>'
+        //返回拼接好的html
+        return html
+    }
+
+    box.innerHTML = fn(word);
+
+
+
+
+</script>
+</body>
+</html>
